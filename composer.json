@@ -1,5 +1,5 @@
 {
-  "name": "zanson/SMParser",
+  "name": "zanson/sm-parser",
   "description": "a model and parser for stepmania files (.sm)",
   "minimum-stability": "stable",
   "license": "MIT",
