@@ -6,7 +6,7 @@ use Zanson\SMParser\SMException;
 
 class Sm
 {
-    public $song = [];
+    public $song;
 
     /**
      * Parses SM files to the SM song model
@@ -17,7 +17,7 @@ class Sm
      */
     function parse($filePath) {
         $filestring = file_get_contents($filePath);
-        $this->song[] = new Song();
+        $this->song = new Song();
         $fs         = preg_replace(array("/\/\/.*\n/", "/^\s*[\r\n][\r\n]?/m"), array("\n", ""), $filestring);
         $filearray  = explode(";", $fs);
         foreach ($filearray as $s) {
