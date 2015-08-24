@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: z
- * Date: 8/23/2015
- * Time: 2:52 AM
- */
-
 namespace Zanson\SMParser\Model\NoteData;
 
 
@@ -20,6 +13,10 @@ class Measure
         $this->type = $type;
     }
 
+    /**
+     * @return DanceSingleRow
+     * @throws SMException
+     */
     public function addRow() {
         if ($this->type == 'dance-single') {
             $this->rows[] = new DanceSingleRow();

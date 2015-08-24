@@ -84,6 +84,9 @@ class Song
         'FGCHANGES'        => 'FGChanges'
     ];
 
+    /**
+     * @return Notes
+     */
     public function newNoteSet() {
         $this->notes[] = new Notes();
 

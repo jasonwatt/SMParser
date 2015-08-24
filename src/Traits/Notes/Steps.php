@@ -18,34 +18,13 @@ trait Steps
     /**
      * @return Measure
      */
-    public function newMeasure() {
-        $this->measures[] = new Measure($this->type);
+    public function newMeasure($key=null) {
+        if(is_null($key)) {
+            $this->measures[] = new Measure($this->type);
+        } else {
+            $this->measures[$key] = new Measure($this->type);
+        }
 
         return end($this->measures);
-    }
-
-    /**
-     * @param mixed $noteData
-     *
-     * @return $this
-     * @throws SMException
-     */
-    public function setStepsFromString($noteData) {
-        if (empty($this->type)) {
-            throw new SMException("Type must be set before setting note data");
-        }
-        $measures = explode(",", $noteData);
-        foreach ($measures as $key => $val) {
-            $rows = explode("\n", $val);
-            $this->measures[$key] = new Measure($this->type);
-            foreach ($rows as $row) {
-                $row = trim($row);
-                if(!empty($row)) {
-                    $this->measures[$key]->addRow()->setAll($row);
-                }
-            }
-        }
-
-        return $this;
     }
 }

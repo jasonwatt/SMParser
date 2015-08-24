@@ -10,6 +10,7 @@ class Row
     /**
      * @param string $row
      *
+     * @return $this
      * @throws \Zanson\SMParser\SMException
      */
     public function setAll($row) {
@@ -23,6 +24,8 @@ class Row
             $val = Note::addByTypeId($val);
         }
         $this->row = $row;
+
+        return $this;
     }
 
     public function getRow() {
