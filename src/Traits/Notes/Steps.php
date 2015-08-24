@@ -12,7 +12,7 @@ trait Steps
      * @return mixed
      */
     public function getSteps() {
-        //return $this->noteData;
+        return $this->measures;
     }
 
     /**

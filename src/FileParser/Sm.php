@@ -8,6 +8,31 @@ class Sm
 {
     public $song;
 
+    private $fileTagNameToFunction = [
+        'TITLE'            => 'Title',
+        'SUBTITLE'         => 'Subtitle',
+        'ARTIST'           => 'Artist',
+        'GENRE'            => 'Genre',
+        'TITLETRANSLIT'    => 'Titletranslit',
+        'SUBTITLETRANSLIT' => 'SubtitleTranslit',
+        'ARTISTTRANSLIT'   => 'ArtistTranslit',
+        'CREDIT'           => 'Credit',
+        'BANNER'           => 'Banner',
+        'BACKGROUND'       => 'Background',
+        'LYRICSPATH'       => 'Lyricspath',
+        'CDTITLE'          => 'Cdtitle',
+        'MUSIC'            => 'Music',
+        'OFFSET'           => 'Offset',
+        'SAMPLESTART'      => 'SampleStart',
+        'SAMPLELENGTH'     => 'SampleLength',
+        'SELECTABLE'       => 'Selectable',
+        'BPMS'             => 'BpmsFromString',
+        'DISPLAYBPM'       => 'Displaybpm',
+        'STOPS'            => 'StopsFromString',
+        'BGCHANGES'        => 'BGChanges',
+        'FGCHANGES'        => 'FGChanges'
+    ];
+
     /**
      * Parses SM files to the SM song model
      *
@@ -49,11 +74,11 @@ class Sm
                         break;
                     }
                     $data[0] = str_replace('#','',$data[0]);
-                    if(empty($this->song->fileTagNameToFunction[$data[0]])){
+                    if(empty($this->fileTagNameToFunction[$data[0]])){
                         throw new SMException('Method for '. $data[0].' Not found');
                         break;
                     }
-                    $method = 'set'.$this->song->fileTagNameToFunction[$data[0]];
+                    $method = 'set'.$this->fileTagNameToFunction[$data[0]];
                     $this->song->{$method}($data[1]);
                     break;
             }

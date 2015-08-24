@@ -29,7 +29,7 @@ use Zanson\SMParser\Traits\Notes\Type;
  *
  * @package Zanson\SMParser\Model
  */
-class Notes
+class Notes implements \JsonSerializable
 {
     use Type, Author, Difficulty, Meter, Groove, Steps;
 
@@ -41,5 +41,24 @@ class Notes
         "   $this->meter:\n" .
         "   " . $this->getGrooveString() . ":\n" .
         $this->getNoteData() . "\n;";
+    }
+
+    /**
+     * (PHP 5 &gt;= 5.4.0)<br/>
+     * Specify data which should be serialized to JSON
+     *
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     *       which is a value of any type other than a resource.
+     */
+    function jsonSerialize() {
+        return [
+            'Type'       => $this->getType(),
+            'Author'     => $this->getAuthor(),
+            'Difficulty' => $this->getDifficulty(),
+            'Meter'      => $this->getMeter(),
+            'Groove'     => $this->getGrooveString(),
+            'Steps'      => $this->getSteps(),
+        ];
     }
 }

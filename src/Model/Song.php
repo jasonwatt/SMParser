@@ -32,7 +32,7 @@ use Zanson\SMParser\Traits\Song\SubtitleTranslit;
 use Zanson\SMParser\Traits\Song\Title;
 use Zanson\SMParser\Traits\Song\Titletranslit;
 
-class Song
+class Song implements \JsonSerializable
 {
     use Title,
         Subtitle,
@@ -59,31 +59,6 @@ class Song
 
     public $notes = [];
 
-    public $fileTagNameToFunction = [
-        'TITLE'            => 'Title',
-        'SUBTITLE'         => 'Subtitle',
-        'ARTIST'           => 'Artist',
-        'GENRE'            => 'Genre',
-        'TITLETRANSLIT'    => 'Titletranslit',
-        'SUBTITLETRANSLIT' => 'SubtitleTranslit',
-        'ARTISTTRANSLIT'   => 'ArtistTranslit',
-        'CREDIT'           => 'Credit',
-        'BANNER'           => 'Banner',
-        'BACKGROUND'       => 'Background',
-        'LYRICSPATH'       => 'Lyricspath',
-        'CDTITLE'          => 'Cdtitle',
-        'MUSIC'            => 'Music',
-        'OFFSET'           => 'Offset',
-        'SAMPLESTART'      => 'SampleStart',
-        'SAMPLELENGTH'     => 'SampleLength',
-        'SELECTABLE'       => 'Selectable',
-        'BPMS'             => 'BpmsFromString',
-        'DISPLAYBPM'       => 'Displaybpm',
-        'STOPS'            => 'StopsFromString',
-        'BGCHANGES'        => 'BGChanges',
-        'FGCHANGES'        => 'FGChanges'
-    ];
-
     /**
      * @return Notes
      */
@@ -92,4 +67,39 @@ class Song
 
         return end($this->notes);
     }
-}
+
+    /**
+     * (PHP 5 &gt;= 5.4.0)<br/>
+     * Specify data which should be serialized to JSON
+     *
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     *       which is a value of any type other than a resource.
+     */
+    function jsonSerialize() {
+        return [
+            'Title'=>$this->getTitle(),
+            'Subtitle'=>$this->getSubtitle(),
+            'Artist'=>$this->getArtist(),
+            'Genre'=>$this->getGenre(),
+            'Titletranslit'=>$this->getTitletranslit(),
+            'SubtitleTranslit'=>$this->getSubtitleTranslit(),
+            'ArtistTranslit'=>$this->getArtistTranslit(),
+            'Credit'=>$this->getCredit(),
+            'Banner'=>$this->getBanner(),
+            'Background'=>$this->getBackground(),
+            'Lyricspath'=>$this->getLyricspath(),
+            'Cdtitle'=>$this->getCdtitle(),
+            'Music'=>$this->getMusic(),
+            'Offset'=>$this->getOffset(),
+            'SampleStart'=>$this->getSampleStart(),
+            'SampleLength'=>$this->getSampleLength(),
+            'Selectable'=>$this->getSelectable(),
+            'Bpms'=>$this->getBpms(),
+            'Displaybpm'=>$this->getDisplaybpm(),
+            'Stops'=>$this->getStops(),
+            'BGChanges'=>$this->getBGChanges(),
+            'FGChanges'=>$this->getFGChanges(),
+            'Notes'=>$this->notes
+        ];
+    }}
