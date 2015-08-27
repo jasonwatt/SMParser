@@ -4,7 +4,7 @@ namespace Zanson\SMParser\FileParser;
 use Zanson\SMParser\Model\SSC\Song;
 use Zanson\SMParser\SMNotImplemented;
 
-class Sm
+class SSC
 {
     public $song;
 
