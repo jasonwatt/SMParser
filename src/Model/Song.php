@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: z
- * Date: 8/23/2015
- * Time: 1:26 AM
- */
-
 namespace Zanson\SMParser\Model;
 
 
@@ -19,7 +12,7 @@ use Zanson\SMParser\Traits\Song\Cdtitle;
 use Zanson\SMParser\Traits\Song\Credit;
 use Zanson\SMParser\Traits\Song\Displaybpm;
 use Zanson\SMParser\Traits\Song\FGChanges;
-use Zanson\SMParser\Traits\Song\Genre;
+use Zanson\SMParser\Traits\Song\Preview;
 use Zanson\SMParser\Traits\Song\Lyricspath;
 use Zanson\SMParser\Traits\Song\Music;
 use Zanson\SMParser\Traits\Song\Offset;
@@ -37,7 +30,7 @@ class Song implements \JsonSerializable
     use Title,
         Subtitle,
         Artist,
-        Genre,
+        Preview,
         Titletranslit,
         SubtitleTranslit,
         ArtistTranslit,
@@ -81,7 +74,7 @@ class Song implements \JsonSerializable
             'Title'=>$this->getTitle(),
             'Subtitle'=>$this->getSubtitle(),
             'Artist'=>$this->getArtist(),
-            'Genre'=>$this->getGenre(),
+            'Genre'=>$this->getPreview(),
             'Titletranslit'=>$this->getTitletranslit(),
             'SubtitleTranslit'=>$this->getSubtitleTranslit(),
             'ArtistTranslit'=>$this->getArtistTranslit(),

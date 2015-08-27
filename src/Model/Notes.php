@@ -9,7 +9,7 @@
 namespace Zanson\SMParser\Model;
 
 
-use Zanson\SMParser\Traits\Notes\Author;
+use Zanson\SMParser\Traits\Notes\Description;
 use Zanson\SMParser\Traits\Notes\Difficulty;
 use Zanson\SMParser\Traits\Notes\Groove;
 use Zanson\SMParser\Traits\Notes\Meter;
@@ -31,12 +31,12 @@ use Zanson\SMParser\Traits\Notes\Type;
  */
 class Notes implements \JsonSerializable
 {
-    use Type, Author, Difficulty, Meter, Groove, Steps;
+    use Type, Description, Difficulty, Meter, Groove, Steps;
 
     public function generateNote() {
         return "#NOTES:\n" .
         "   $this->type:\n" .
-        "   $this->author:\n" .
+        "   $this->description:\n" .
         "   $this->difficulty:\n" .
         "   $this->meter:\n" .
         "   " . $this->getGrooveString() . ":\n" .
@@ -54,7 +54,7 @@ class Notes implements \JsonSerializable
     function jsonSerialize() {
         return [
             'Type'       => $this->getType(),
-            'Author'     => $this->getAuthor(),
+            'Author'     => $this->getDescription(),
             'Difficulty' => $this->getDifficulty(),
             'Meter'      => $this->getMeter(),
             'Groove'     => $this->getGrooveString(),

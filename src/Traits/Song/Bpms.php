@@ -24,12 +24,12 @@ trait Bpms
      * @return string
      */
     public function getBpms() {
-        $bpms = [];
-        foreach ($this->bpms as $beat => $bpm) {
-            $bpms[] = $beat . '=' . $bpm;
+        $array = [];
+        foreach ($this->bpms as $key => $value) {
+            $array[] = $key . '=' . $value;
         }
 
-        return implode(',', $bpms);
+        return implode(',', $array);
     }
 
     /**

@@ -2,7 +2,7 @@
 namespace Zanson\SMParser\FileParser;
 
 use Zanson\SMParser\Model\Song;
-use Zanson\SMParser\SMException;
+use Zanson\SMParser\SMNotImplemented;
 
 class Sm
 {
@@ -38,7 +38,7 @@ class Sm
      *
      * @param $filePath
      *
-     * @throws SMException
+     * @throws SMNotImplemented
      */
     function parse($filePath) {
         $filestring = file_get_contents($filePath);
@@ -51,7 +51,7 @@ class Sm
                 case '#NOTES':
                     $noteSet = $this->song->newNoteSet();
                     $noteSet->setType($data[1])
-                        ->setAuthor($data[2])
+                        ->setDescription($data[2])
                         ->setDifficulty($data[3])
                         ->setMeter($data[4])
                         ->setGroove($data[5]);
@@ -75,7 +75,7 @@ class Sm
                     }
                     $data[0] = str_replace('#','',$data[0]);
                     if(empty($this->fileTagNameToFunction[$data[0]])){
-                        throw new SMException('Method for '. $data[0].' Not found');
+                        throw new SMNotImplemented('Method for '. $data[0].' Not found');
                         break;
                     }
                     $method = 'set'.$this->fileTagNameToFunction[$data[0]];
