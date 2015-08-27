@@ -1,7 +1,7 @@
 <?php
 namespace Zanson\SMParser\FileParser;
 
-use Zanson\SMParser\Model\SM\Song;
+use Zanson\SMParser\Model\SSC\Song;
 use Zanson\SMParser\SMNotImplemented;
 
 class Sm
@@ -30,7 +30,24 @@ class Sm
         'DISPLAYBPM'       => 'Displaybpm',
         'STOPS'            => 'StopsFromString',
         'BGCHANGES'        => 'BGChanges',
-        'FGCHANGES'        => 'FGChanges'
+        'FGCHANGES'        => 'FGChanges',
+        'VERSION'          => 'Version',
+        'PREVIEW'          => 'Preview',
+        'ORIGIN'           => 'Origin',
+        'PREVIEWVID'       => 'PreviewVid',
+        'JACKET'           => 'Jacket',
+        'CDIMAGE'          => 'CDImage',
+        'DISCIMAGE'        => 'DiscImage',
+        'DELAYS'           => 'Delays',
+        'WARPS'            => 'Warps',
+        'TICKCOUNTS'       => 'TickCounts',
+        'COMBOS'           => 'Combos',
+        'SPEEDS'           => 'Speeds',
+        'SCROLLS'          => 'Scrolls',
+        'FAKES'            => 'Fakes',
+        'LABELS'           => 'Labels',
+        'KEYSOUNDS'        => 'KeySounds',
+        'ATTACKS'          => 'Attacks'
     ];
 
     /**
@@ -40,6 +57,7 @@ class Sm
      *
      * @throws SMNotImplemented
      */
+    //TODO: Add NOTEDATA Parsing
     function parse($filePath) {
         $filestring = file_get_contents($filePath);
         $this->song = new Song();
@@ -58,11 +76,11 @@ class Sm
 
                     $measures = explode(",", $data[6]);
                     foreach ($measures as $key => $val) {
-                        $rows = explode("\n", $val);
+                        $rows       = explode("\n", $val);
                         $newMeasure = $noteSet->newMeasure($key);
                         foreach ($rows as $row) {
                             $row = trim($row);
-                            if(!empty($row)) {
+                            if (!empty($row)) {
                                 $newMeasure->addRow()->setAll($row);
                             }
                         }
@@ -70,15 +88,15 @@ class Sm
 
                     break;
                 default:
-                    if(empty($data[0])){
+                    if (empty($data[0])) {
                         break;
                     }
-                    $data[0] = str_replace('#','',$data[0]);
-                    if(empty($this->fileTagNameToFunction[$data[0]])){
-                        throw new SMNotImplemented('Method for '. $data[0].' Not found');
+                    $data[0] = str_replace('#', '', $data[0]);
+                    if (empty($this->fileTagNameToFunction[$data[0]])) {
+                        throw new SMNotImplemented('Method for ' . $data[0] . ' Not found');
                         break;
                     }
-                    $method = 'set'.$this->fileTagNameToFunction[$data[0]];
+                    $method = 'set' . $this->fileTagNameToFunction[$data[0]];
                     $this->song->{$method}($data[1]);
                     break;
             }

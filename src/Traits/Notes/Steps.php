@@ -2,7 +2,6 @@
 namespace Zanson\SMParser\Traits\Notes;
 
 use Zanson\SMParser\Model\NoteData\Measure;
-use Zanson\SMParser\SMException;
 
 trait Steps
 {

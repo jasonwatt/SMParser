@@ -1,29 +1,19 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: z
- * Date: 8/23/2015
- * Time: 1:16 AM
- */
-
-namespace Zanson\SMParser\Model;
+namespace Zanson\SMParser\Model\SSC;
 
 
+use Zanson\SMParser\Traits\Notes\ChartName;
 use Zanson\SMParser\Traits\Notes\Description;
 use Zanson\SMParser\Traits\Notes\Difficulty;
 use Zanson\SMParser\Traits\Notes\Groove;
 use Zanson\SMParser\Traits\Notes\Meter;
 use Zanson\SMParser\Traits\Notes\Steps;
 use Zanson\SMParser\Traits\Notes\Type;
+use Zanson\SMParser\Traits\Song\Attacks;
+use Zanson\SMParser\Traits\Song\Credit;
 
 /**
  * The #NOTES descriptor always takes this form:
- * NotesType:
- * Description:
- * DifficultyClass:
- * DifficultyMeter:
- * RadarValues:
- * NoteData:
  *
  * Class Note
  *
@@ -31,7 +21,15 @@ use Zanson\SMParser\Traits\Notes\Type;
  */
 class Notes implements \JsonSerializable
 {
-    use Type, Description, Difficulty, Meter, Groove, Steps;
+    use ChartName,
+        Type,
+        Description,
+        Difficulty,
+        Meter,
+        Groove,
+        Steps,
+        Credit,
+        Attacks;
 
     public function generateNote() {
         return "#NOTES:\n" .
@@ -53,12 +51,15 @@ class Notes implements \JsonSerializable
      */
     function jsonSerialize() {
         return [
+            'ChartName'  => $this->getChartName(),
             'Type'       => $this->getType(),
             'Author'     => $this->getDescription(),
             'Difficulty' => $this->getDifficulty(),
             'Meter'      => $this->getMeter(),
             'Groove'     => $this->getGrooveString(),
             'Steps'      => $this->getSteps(),
+            'Credit'     => $this->getCredit(),
+            'Attacks'    => $this->getAttacks(),
         ];
     }
 }

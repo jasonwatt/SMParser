@@ -3,7 +3,7 @@ namespace Zanson\SMParser\Traits\Song;
 
 use Zanson\SMParser\SMException;
 
-trait Jaclet {
+trait Jacket {
     private $jacket='';
 
     /**

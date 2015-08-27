@@ -22,26 +22,26 @@ trait Stops
      * @return string
      */
     public function getStops() {
-        $bpms = [];
-        foreach ($this->stops as $beat => $bpm) {
-            $bpms[] = $beat . '=' . $bpm;
+        $array = [];
+        foreach ($this->stops as $key => $value) {
+            $array[] = $key . '=' . $value;
         }
 
-        return implode(',', $bpms);
+        return implode(',', $array);
     }
 
     /**
-     * @param string $bpms
+     * @param string $string
      *
      * @return $this
      * @throws SMException
      */
-    public function setStopsFromString($bpms) {
-        if (!is_string($bpms)) {
+    public function setStopsFromString($string) {
+        if (!is_string($string)) {
             throw new SMException("Bpms must be a string");
         }
-        $bpms = explode(',', $bpms);
-        foreach ($bpms as $b) {
+        $string = explode(',', $string);
+        foreach ($string as $b) {
             $e                  = explode('=', $b);
             $this->stops[trim($e[0])] = trim($e[1]);
         }
@@ -55,8 +55,8 @@ trait Stops
      *
      * @return $this
      */
-    public function setStops($beat, $bpm) {
-        $this->stops[(string)$beat] = $bpm;
+    public function setStops($startTime, $length) {
+        $this->stops[(string)$startTime] = $length;
 
         return $this;
     }

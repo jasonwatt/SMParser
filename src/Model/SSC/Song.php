@@ -1,42 +1,65 @@
 <?php
-namespace Zanson\SMParser\Model;
-
+namespace Zanson\SMParser\Model\SSC;
 
 use Zanson\SMParser\Traits\Song\Artist;
 use Zanson\SMParser\Traits\Song\ArtistTranslit;
+use Zanson\SMParser\Traits\Song\Attacks;
 use Zanson\SMParser\Traits\Song\Background;
 use Zanson\SMParser\Traits\Song\Banner;
 use Zanson\SMParser\Traits\Song\BGChanges;
 use Zanson\SMParser\Traits\Song\Bpms;
+use Zanson\SMParser\Traits\Song\CDImage;
 use Zanson\SMParser\Traits\Song\Cdtitle;
+use Zanson\SMParser\Traits\Song\Combos;
 use Zanson\SMParser\Traits\Song\Credit;
+use Zanson\SMParser\Traits\Song\DiscImage;
 use Zanson\SMParser\Traits\Song\Displaybpm;
+use Zanson\SMParser\Traits\Song\Fakes;
 use Zanson\SMParser\Traits\Song\FGChanges;
+use Zanson\SMParser\Traits\Song\Genre;
+use Zanson\SMParser\Traits\Song\Jacket;
+use Zanson\SMParser\Traits\Song\KeySounds;
+use Zanson\SMParser\Traits\Song\Labels;
+use Zanson\SMParser\Traits\Song\Origin;
 use Zanson\SMParser\Traits\Song\Preview;
 use Zanson\SMParser\Traits\Song\Lyricspath;
 use Zanson\SMParser\Traits\Song\Music;
 use Zanson\SMParser\Traits\Song\Offset;
+use Zanson\SMParser\Traits\Song\PreviewVid;
 use Zanson\SMParser\Traits\Song\SampleLength;
 use Zanson\SMParser\Traits\Song\SampleStart;
+use Zanson\SMParser\Traits\Song\Scrolls;
 use Zanson\SMParser\Traits\Song\Selectable;
+use Zanson\SMParser\Traits\Song\Delays;
+use Zanson\SMParser\Traits\Song\Speeds;
 use Zanson\SMParser\Traits\Song\Stops;
 use Zanson\SMParser\Traits\Song\Subtitle;
 use Zanson\SMParser\Traits\Song\SubtitleTranslit;
+use Zanson\SMParser\Traits\Song\TickCounts;
 use Zanson\SMParser\Traits\Song\Title;
 use Zanson\SMParser\Traits\Song\Titletranslit;
+use Zanson\SMParser\Traits\Song\Version;
+use Zanson\SMParser\Traits\Song\Warps;
 
 class Song implements \JsonSerializable
 {
-    use Title,
+    use Version,
+        Title,
         Subtitle,
         Artist,
         Preview,
         Titletranslit,
         SubtitleTranslit,
         ArtistTranslit,
+        Genre,
+        Origin,
         Credit,
         Banner,
         Background,
+        PreviewVid,
+        Jacket,
+        CDImage,
+        DiscImage,
         Lyricspath,
         Cdtitle,
         Music,
@@ -47,8 +70,18 @@ class Song implements \JsonSerializable
         Bpms,
         Displaybpm,
         Stops,
+        Delays,
+        Warps,
+        TickCounts,
+        Combos,
+        Speeds,
+        Scrolls,
+        Fakes,
+        Labels,
+        KeySounds,
         BGChanges,
-        FGChanges;
+        FGChanges,
+        Attacks;
 
     public $notes = [];
 
@@ -71,10 +104,11 @@ class Song implements \JsonSerializable
      */
     function jsonSerialize() {
         return [
+            'Version' => $this->getVersion(),
             'Title'=>$this->getTitle(),
             'Subtitle'=>$this->getSubtitle(),
             'Artist'=>$this->getArtist(),
-            'Genre'=>$this->getPreview(),
+            'Preview'=>$this->getPreview(),
             'Titletranslit'=>$this->getTitletranslit(),
             'SubtitleTranslit'=>$this->getSubtitleTranslit(),
             'ArtistTranslit'=>$this->getArtistTranslit(),
@@ -93,6 +127,20 @@ class Song implements \JsonSerializable
             'Stops'=>$this->getStops(),
             'BGChanges'=>$this->getBGChanges(),
             'FGChanges'=>$this->getFGChanges(),
-            'Notes'=>$this->notes
+            'Notes'=>$this->notes,
+            'Attacks'=>$this->getAttacks(),
+            'Origin' => $this->getOrigin(),
+            'PreviewVid' => $this->getPreviewVid(),
+            'Jacket' => $this->getJacket(),
+            'CDImage' => $this->getCDImage(),
+            'DiscImage' => $this->getDiscImage(),
+            'Warps' => $this->getWarps(),
+            'TickCounts' => $this->getTickCounts(),
+            'Combos' => $this->getCombos(),
+            'Speeds' => $this->getSpeeds(),
+            'Scrolls' => $this->getScrolls(),
+            'Fakes' => $this->getFakes(),
+            'Labels' => $this->getLabels(),
+            'KeySounds' => $this->getKeySounds(),
         ];
     }}
