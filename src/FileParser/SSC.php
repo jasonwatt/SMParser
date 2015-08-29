@@ -5,9 +5,9 @@ use Zanson\DebugHelper\Output;
 use Zanson\SMParser\Model\SSC\Song;
 use Zanson\SMParser\SMNotImplemented;
 
-class SSC
+class SSC extends FileParserAbstract implements FileParserInterface
 {
-    public $song;
+    protected $fileExtension = 'ssc';
 
     private $fileTagNameToFunction = [
         'VERSION'          => 'Version',
@@ -62,14 +62,14 @@ class SSC
     /**
      * Parses SM files to the SM song model
      *
-     * @param $filePath
+     * @param string $fileContents Pass in the contents of the file
      *
+     * @return null|void
      * @throws SMNotImplemented
      */
-    function parse($filePath) {
-        $filestring  = file_get_contents($filePath);
+    function parse($fileContents) {
         $this->song  = new Song();
-        $fs          = preg_replace(array("/\/\/.*\n/", "/^\s*[\r\n][\r\n]?/m"), array("\n", ""), $filestring);
+        $fs          = preg_replace(array("/\/\/.*\n/", "/^\s*[\r\n][\r\n]?/m"), array("\n", ""), $fileContents);
         $filearray   = explode(";", $fs);
         $parsingNote = false;
         $noteSet     = null;
@@ -118,6 +118,11 @@ class SSC
         }
     }
 
+    /**
+     * Exports the content of a file to be saved
+     *
+     * @return string
+     */
     public function export() {
         $file = '';
         foreach ($this->fileTagNameToFunction as $tag => $function) {
@@ -147,5 +152,12 @@ class SSC
         }
 
         return $file;
+    }
+
+    /**
+     * @param Song $song
+     */
+    public function setSong(Song $song) {
+        $this->song = $song;
     }
 }
