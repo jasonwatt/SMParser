@@ -13,7 +13,7 @@ use Zanson\SMParser\SMException;
  */
 trait Offset
 {
-    private $offset = '';
+    public $offset = '';
 
     /**
      * @return string

@@ -14,7 +14,7 @@ use Zanson\SMParser\SMException;
  */
 trait Selectable
 {
-    private $selectable = 'YES';
+    public $selectable = 'YES';
 
     /**
      * @return string

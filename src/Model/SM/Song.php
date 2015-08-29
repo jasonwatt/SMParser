@@ -50,7 +50,6 @@ class Song implements \JsonSerializable
         Selectable,
         Bpms,
         Displaybpm,
-        Delays,
         Stops,
         BGChanges,
         FGChanges,
@@ -100,8 +99,8 @@ class Song implements \JsonSerializable
             'Stops'            => $this->getStops(),
             'BGChanges'        => $this->getBGChanges(),
             'FGChanges'        => $this->getFGChanges(),
-            'Notes'            => $this->notes,
-            'Attacks'          => $this->getAttacks()
+            'Attacks'          => $this->getAttacks(),
+            'Notes'            => $this->notes
         ];
     }
 }

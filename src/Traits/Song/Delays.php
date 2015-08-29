@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait Delays
 {
-    private $Delays = [];
+    public $Delays = [];
 
     /**
      * @return string

@@ -14,7 +14,7 @@ use Zanson\SMParser\SMException;
  */
 trait SampleStart
 {
-    private $sampleStart = '';
+    public $sampleStart = '';
 
     /**
      * @return string

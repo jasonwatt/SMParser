@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait Jacket
 {
-    private $jacket = '';
+    public $jacket = '';
 
     /**
      * @return string

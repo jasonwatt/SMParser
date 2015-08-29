@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait ChartName
 {
-    private $ChartName = '';
+    public $ChartName = '';
 
     /**
      * @return string

@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait Banner
 {
-    private $banner = '';
+    public $banner = '';
 
     /**
      * @return string

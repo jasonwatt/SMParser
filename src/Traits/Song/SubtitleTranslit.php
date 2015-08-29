@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait SubtitleTranslit
 {
-    private $subtitleTranslit = '';
+    public $subtitleTranslit = '';
 
     /**
      * @return string

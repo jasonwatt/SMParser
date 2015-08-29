@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait Displaybpm
 {
-    private $displaybpm = '';
+    public $displaybpm = '';
 
     /**
      * @return string

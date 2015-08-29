@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait Background
 {
-    private $background = '';
+    public $background = '';
 
     /**
      * @return string

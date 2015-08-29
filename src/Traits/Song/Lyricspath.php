@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait Lyricspath
 {
-    private $lyricspath = '';
+    public $lyricspath = '';
 
     /**
      * @return string

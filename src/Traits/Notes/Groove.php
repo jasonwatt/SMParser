@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait Groove
 {
-    private $groove = [0, 0, 0, 0, 0];
+    public $groove = [0, 0, 0, 0, 0];
 
     /**
      * @return array

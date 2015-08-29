@@ -13,7 +13,7 @@ use Zanson\SMParser\SMException;
  */
 trait Subtitle
 {
-    private $subtitle = '';
+    public $subtitle = '';
 
     /**
      * @return string

@@ -53,15 +53,16 @@ class Notes implements \JsonSerializable
      */
     function jsonSerialize() {
         return [
-            'ChartName'  => $this->getChartName(),
-            'Type'       => $this->getType(),
-            'Author'     => $this->getDescription(),
-            'Difficulty' => $this->getDifficulty(),
-            'Meter'      => $this->getMeter(),
-            'Groove'     => $this->getGrooveString(),
-            'Steps'      => $this->getSteps(),
-            'Credit'     => $this->getCredit(),
-            'Attacks'    => $this->getAttacks(),
+            'ChartName'   => $this->getChartName(),
+            'ChartStyle' => $this->getChartStyle(),
+            'Type'        => $this->getType(),
+            'Author'      => $this->getDescription(),
+            'Difficulty'  => $this->getDifficulty(),
+            'Meter'       => $this->getMeter(),
+            'Groove'      => $this->getGrooveString(),
+            'Credit'      => $this->getCredit(),
+            'Attacks'     => $this->getAttacks(),
+            'Steps'       => $this->getSteps()
         ];
     }
 }

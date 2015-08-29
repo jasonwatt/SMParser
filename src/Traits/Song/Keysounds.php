@@ -16,7 +16,7 @@ use Zanson\SMParser\SMException;
  */
 trait KeySounds
 {
-    private $keysounds = [];
+    public $keysounds = [];
 
     /**
      * @return string

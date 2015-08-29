@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait Preview
 {
-    private $preview = '';
+    public $preview = '';
 
     /**
      * @return string

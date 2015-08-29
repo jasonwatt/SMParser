@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait Version
 {
-    private $version = '';
+    public $version = '';
 
     /**
      * @return string

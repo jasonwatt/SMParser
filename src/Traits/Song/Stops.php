@@ -16,7 +16,7 @@ use Zanson\SMParser\SMException;
  */
 trait Stops
 {
-    private $stops = [];
+    public $stops = [];
 
     /**
      * @return string

@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait CDImage
 {
-    private $CDImage = '';
+    public $CDImage = '';
 
     /**
      * @return string

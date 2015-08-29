@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait Labels
 {
-    private $Labels = [];
+    public $Labels = [];
 
     /**
      * @return string

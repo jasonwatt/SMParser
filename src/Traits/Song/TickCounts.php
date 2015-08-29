@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait TickCounts
 {
-    private $TickCounts = [];
+    public $TickCounts = [];
 
     /**
      * @return string

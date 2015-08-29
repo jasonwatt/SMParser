@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait ArtistTranslit
 {
-    private $artistTranslit = '';
+    public $artistTranslit = '';
 
     /**
      * @return string

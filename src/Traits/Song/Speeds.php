@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait Speeds
 {
-    private $Speeds = [];
+    public $Speeds = [];
 
     /**
      * @return string

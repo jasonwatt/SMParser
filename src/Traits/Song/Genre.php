@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait Genre
 {
-    private $genre = '';
+    public $genre = '';
 
     /**
      * @return string

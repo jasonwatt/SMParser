@@ -110,6 +110,7 @@ class Song implements \JsonSerializable
             'Title'            => $this->getTitle(),
             'Subtitle'         => $this->getSubtitle(),
             'Artist'           => $this->getArtist(),
+            'Genre'            => $this->getGenre(),
             'Preview'          => $this->getPreview(),
             'Titletranslit'    => $this->getTitletranslit(),
             'SubtitleTranslit' => $this->getSubtitleTranslit(),
@@ -130,13 +131,13 @@ class Song implements \JsonSerializable
             'BGChanges'        => $this->getBGChanges(),
             'FGChanges'        => $this->getFGChanges(),
             'TimeSignatures'   => $this->getTimeSignatures(),
-            'Notes'            => $this->notes,
             'Attacks'          => $this->getAttacks(),
             'Origin'           => $this->getOrigin(),
             'PreviewVid'       => $this->getPreviewVid(),
             'Jacket'           => $this->getJacket(),
             'CDImage'          => $this->getCDImage(),
             'DiscImage'        => $this->getDiscImage(),
+            'Delays'           => $this->getDelays(),
             'Warps'            => $this->getWarps(),
             'TickCounts'       => $this->getTickCounts(),
             'Combos'           => $this->getCombos(),
@@ -145,6 +146,7 @@ class Song implements \JsonSerializable
             'Fakes'            => $this->getFakes(),
             'Labels'           => $this->getLabels(),
             'KeySounds'        => $this->getKeySounds(),
+            'Notes'            => $this->notes,
         ];
     }
 }

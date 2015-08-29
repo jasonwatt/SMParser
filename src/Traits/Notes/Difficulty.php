@@ -6,7 +6,7 @@ use Zanson\SMParser\SMException;
 
 trait Difficulty
 {
-    private $difficulty = '';
+    public $difficulty = '';
 
     /**
      * @return string

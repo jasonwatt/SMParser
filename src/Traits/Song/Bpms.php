@@ -16,7 +16,7 @@ use Zanson\SMParser\SMException;
  */
 trait Bpms
 {
-    private $bpms = [];
+    public $bpms = [];
     public $minBpm = 0;
     public $maxBpm = 999;
 

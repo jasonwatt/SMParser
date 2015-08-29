@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait DiscImage
 {
-    private $DiscImage = '';
+    public $DiscImage = '';
 
     /**
      * @return string

@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait Combos
 {
-    private $Combos = '';
+    public $Combos = '';
 
     /**
      * @return string

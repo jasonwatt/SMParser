@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait TimsSignatures
 {
-    private $TimsSignatures = [];
+    public $TimsSignatures = [];
 
     /**
      * @return string

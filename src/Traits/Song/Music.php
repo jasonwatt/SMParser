@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait Music
 {
-    private $music = '';
+    public $music = '';
 
     /**
      * @return string

@@ -36,7 +36,7 @@ use Zanson\SMParser\SMException;
  */
 trait BGChanges
 {
-    private $bgChanges = '';
+    public $bgChanges = '';
 
     /**
      * @return string

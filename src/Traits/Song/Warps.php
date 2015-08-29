@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait Warps
 {
-    private $Warps = [];
+    public $Warps = [];
 
     /**
      * @return string

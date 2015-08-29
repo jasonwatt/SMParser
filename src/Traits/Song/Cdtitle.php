@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait Cdtitle
 {
-    private $cdtitle = '';
+    public $cdtitle = '';
 
     /**
      * @return string

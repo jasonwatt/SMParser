@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait Description
 {
-    private $description = '';
+    public $description = '';
 
     /**
      * @return string

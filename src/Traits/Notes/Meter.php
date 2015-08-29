@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait Meter
 {
-    private $meter = 0;
+    public $meter = 0;
 
     /**
      * @return integer

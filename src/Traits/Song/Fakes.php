@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait Fakes
 {
-    private $Fakes = [];
+    public $Fakes = [];
 
     /**
      * @return string

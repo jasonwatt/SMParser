@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait Attacks
 {
-    private $Attacks = '';
+    public $Attacks = '';
 
     /**
      * @return string

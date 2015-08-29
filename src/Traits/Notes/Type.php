@@ -28,7 +28,7 @@ use Zanson\SMParser\SMException;
  */
 trait Type
 {
-    private $type = '';
+    public $type = '';
 
 
     /**
