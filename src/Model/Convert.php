@@ -1,8 +1,6 @@
 <?php
 namespace Zanson\SMParser\Model;
 
-use Zanson\DebugHelper\Output;
-
 class Convert
 {
     /**
