@@ -9,6 +9,7 @@
 namespace Zanson\SMParser;
 
 
-class SMException extends \Exception{
+class SMException extends \Exception
+{
 
 }

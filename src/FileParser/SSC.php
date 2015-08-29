@@ -33,28 +33,29 @@ class SSC
         'FGCHANGES'        => 'FGChanges',
         'VERSION'          => 'Version',
         'PREVIEW'          => 'Preview',
+        'TIMESIGNATURES'   => 'TimeSignaturesFromString',
         'ORIGIN'           => 'Origin',
         'PREVIEWVID'       => 'PreviewVid',
         'JACKET'           => 'Jacket',
         'CDIMAGE'          => 'CDImage',
         'DISCIMAGE'        => 'DiscImage',
-        'DELAYS'           => 'Delays',
-        'WARPS'            => 'Warps',
-        'TICKCOUNTS'       => 'TickCounts',
+        'DELAYS'           => 'DelaysFromString',
+        'WARPS'            => 'WarpsFromString',
+        'TICKCOUNTS'       => 'TickCountsFromString',
         'COMBOS'           => 'Combos',
-        'SPEEDS'           => 'Speeds',
-        'SCROLLS'          => 'Scrolls',
-        'FAKES'            => 'Fakes',
-        'LABELS'           => 'Labels',
+        'SPEEDS'           => 'SpeedsFromString',
+        'SCROLLS'          => 'ScrollsFromString',
+        'FAKES'            => 'FakesFromString',
+        'LABELS'           => 'LabelsFromString',
         'KEYSOUNDS'        => 'KeySounds',
         'ATTACKS'          => 'Attacks',
-        'CHARTNAME'        => 'setChartName',
-        'STEPSTYPE'        => 'setType',
-        'DESCRIPTION'      => 'setDescription',
-        'CHARTSTYLE'       => 'setStyle',
-        'DIFFICULTY'       => 'setDifficulty',
-        'METER'            => 'setMeter',
-        'Credit'           => 'setCredit'
+        'CHARTNAME'        => 'ChartName',
+        'STEPSTYPE'        => 'Type',
+        'DESCRIPTION'      => 'Description',
+        'CHARTSTYLE'       => 'ChartStyle',
+        'DIFFICULTY'       => 'Difficulty',
+        'METER'            => 'Meter',
+        'RADARVALUES'      => 'Groove'
     ];
 
     /**
@@ -64,7 +65,6 @@ class SSC
      *
      * @throws SMNotImplemented
      */
-    //TODO: Add NOTEDATA Parsing
     function parse($filePath) {
         $filestring  = file_get_contents($filePath);
         $this->song  = new Song();
@@ -73,7 +73,7 @@ class SSC
         $parsingNote = false;
         $noteSet     = null;
         foreach ($filearray as $s) {
-            $data = explode(":", trim($s));
+            $data = explode(":", trim($s), 2);
             switch (strtoupper($data[0])) {
                 case '#NOTEDATA':
                     $parsingNote = true;
@@ -93,6 +93,9 @@ class SSC
                     }
                     $parsingNote = false;
                     break;
+                case '#RADARVALUES':
+                    $data[1] = array_slice(explode(',', $data[1]), 0, 5);
+                //Fall through
                 default:
                     if (empty($data[0])) {
                         break;

@@ -3,28 +3,28 @@ namespace Zanson\SMParser\Traits\Notes;
 
 use Zanson\SMParser\SMException;
 
-trait ChartName
+trait ChartStyle
 {
-    private $ChartName = '';
+    private $ChartStyle = '';
 
     /**
      * @return string
      */
-    public function getChartName() {
-        return $this->ChartName;
+    public function getChartStyle() {
+        return $this->ChartStyle;
     }
 
     /**
-     * @param string $ChartName
+     * @param string $ChartStyle
      *
      * @return $this
      * @throws SMException
      */
-    public function setChartName($ChartName) {
-        if (!is_string($ChartName)) {
+    public function setChartStyle($ChartStyle) {
+        if (!is_string($ChartStyle)) {
             throw new SMException("ChartName must be a string");
         }
-        $this->ChartName = $ChartName;
+        $this->ChartStyle = $ChartStyle;
 
         return $this;
     }

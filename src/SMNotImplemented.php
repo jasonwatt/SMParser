@@ -2,6 +2,7 @@
 namespace Zanson\SMParser;
 
 
-class SMNotImplemented extends \Exception{
+class SMNotImplemented extends \Exception
+{
 
 }

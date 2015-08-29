@@ -17,8 +17,8 @@ trait Steps
     /**
      * @return Measure
      */
-    public function newMeasure($key=null) {
-        if(is_null($key)) {
+    public function newMeasure($key = null) {
+        if (is_null($key)) {
             $this->measures[] = new Measure($this->type);
         } else {
             $this->measures[$key] = new Measure($this->type);

@@ -3,6 +3,7 @@ namespace Zanson\SMParser\Model\SSC;
 
 
 use Zanson\SMParser\Traits\Notes\ChartName;
+use Zanson\SMParser\Traits\Notes\ChartStyle;
 use Zanson\SMParser\Traits\Notes\Description;
 use Zanson\SMParser\Traits\Notes\Difficulty;
 use Zanson\SMParser\Traits\Notes\Groove;
@@ -24,6 +25,7 @@ class Notes implements \JsonSerializable
     use ChartName,
         Type,
         Description,
+        ChartStyle,
         Difficulty,
         Meter,
         Groove,

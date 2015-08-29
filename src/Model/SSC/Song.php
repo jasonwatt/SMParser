@@ -36,6 +36,7 @@ use Zanson\SMParser\Traits\Song\Stops;
 use Zanson\SMParser\Traits\Song\Subtitle;
 use Zanson\SMParser\Traits\Song\SubtitleTranslit;
 use Zanson\SMParser\Traits\Song\TickCounts;
+use Zanson\SMParser\Traits\Song\TimeSignatures;
 use Zanson\SMParser\Traits\Song\Title;
 use Zanson\SMParser\Traits\Song\Titletranslit;
 use Zanson\SMParser\Traits\Song\Version;
@@ -81,7 +82,8 @@ class Song implements \JsonSerializable
         KeySounds,
         BGChanges,
         FGChanges,
-        Attacks;
+        Attacks,
+        TimeSignatures;
 
     public $notes = [];
 
@@ -104,43 +106,45 @@ class Song implements \JsonSerializable
      */
     function jsonSerialize() {
         return [
-            'Version' => $this->getVersion(),
-            'Title'=>$this->getTitle(),
-            'Subtitle'=>$this->getSubtitle(),
-            'Artist'=>$this->getArtist(),
-            'Preview'=>$this->getPreview(),
-            'Titletranslit'=>$this->getTitletranslit(),
-            'SubtitleTranslit'=>$this->getSubtitleTranslit(),
-            'ArtistTranslit'=>$this->getArtistTranslit(),
-            'Credit'=>$this->getCredit(),
-            'Banner'=>$this->getBanner(),
-            'Background'=>$this->getBackground(),
-            'Lyricspath'=>$this->getLyricspath(),
-            'Cdtitle'=>$this->getCdtitle(),
-            'Music'=>$this->getMusic(),
-            'Offset'=>$this->getOffset(),
-            'SampleStart'=>$this->getSampleStart(),
-            'SampleLength'=>$this->getSampleLength(),
-            'Selectable'=>$this->getSelectable(),
-            'Bpms'=>$this->getBpms(),
-            'Displaybpm'=>$this->getDisplaybpm(),
-            'Stops'=>$this->getStops(),
-            'BGChanges'=>$this->getBGChanges(),
-            'FGChanges'=>$this->getFGChanges(),
-            'Notes'=>$this->notes,
-            'Attacks'=>$this->getAttacks(),
-            'Origin' => $this->getOrigin(),
-            'PreviewVid' => $this->getPreviewVid(),
-            'Jacket' => $this->getJacket(),
-            'CDImage' => $this->getCDImage(),
-            'DiscImage' => $this->getDiscImage(),
-            'Warps' => $this->getWarps(),
-            'TickCounts' => $this->getTickCounts(),
-            'Combos' => $this->getCombos(),
-            'Speeds' => $this->getSpeeds(),
-            'Scrolls' => $this->getScrolls(),
-            'Fakes' => $this->getFakes(),
-            'Labels' => $this->getLabels(),
-            'KeySounds' => $this->getKeySounds(),
+            'Version'          => $this->getVersion(),
+            'Title'            => $this->getTitle(),
+            'Subtitle'         => $this->getSubtitle(),
+            'Artist'           => $this->getArtist(),
+            'Preview'          => $this->getPreview(),
+            'Titletranslit'    => $this->getTitletranslit(),
+            'SubtitleTranslit' => $this->getSubtitleTranslit(),
+            'ArtistTranslit'   => $this->getArtistTranslit(),
+            'Credit'           => $this->getCredit(),
+            'Banner'           => $this->getBanner(),
+            'Background'       => $this->getBackground(),
+            'Lyricspath'       => $this->getLyricspath(),
+            'Cdtitle'          => $this->getCdtitle(),
+            'Music'            => $this->getMusic(),
+            'Offset'           => $this->getOffset(),
+            'SampleStart'      => $this->getSampleStart(),
+            'SampleLength'     => $this->getSampleLength(),
+            'Selectable'       => $this->getSelectable(),
+            'Bpms'             => $this->getBpms(),
+            'Displaybpm'       => $this->getDisplaybpm(),
+            'Stops'            => $this->getStops(),
+            'BGChanges'        => $this->getBGChanges(),
+            'FGChanges'        => $this->getFGChanges(),
+            'TimeSignatures'   => $this->getTimeSignatures(),
+            'Notes'            => $this->notes,
+            'Attacks'          => $this->getAttacks(),
+            'Origin'           => $this->getOrigin(),
+            'PreviewVid'       => $this->getPreviewVid(),
+            'Jacket'           => $this->getJacket(),
+            'CDImage'          => $this->getCDImage(),
+            'DiscImage'        => $this->getDiscImage(),
+            'Warps'            => $this->getWarps(),
+            'TickCounts'       => $this->getTickCounts(),
+            'Combos'           => $this->getCombos(),
+            'Speeds'           => $this->getSpeeds(),
+            'Scrolls'          => $this->getScrolls(),
+            'Fakes'            => $this->getFakes(),
+            'Labels'           => $this->getLabels(),
+            'KeySounds'        => $this->getKeySounds(),
         ];
-    }}
+    }
+}

@@ -5,7 +5,7 @@ use Zanson\SMParser\SMException;
 
 trait Groove
 {
-    private $groove = [0,0,0,0,0];
+    private $groove = [0, 0, 0, 0, 0];
 
     /**
      * @return array
@@ -38,7 +38,7 @@ trait Groove
         } else {
             throw new SMException("Groove radar Invalid value type");
         }
-        foreach($groove as &$g){
+        foreach ($groove as &$g) {
             $g = trim($g);
         }
 

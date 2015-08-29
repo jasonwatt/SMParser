@@ -24,7 +24,7 @@ trait Attacks
         if (!is_string($Attacks)) {
             throw new SMException("Attacks must be a string");
         }
-        $this->Attacks = $Attacks;
+        $this->Attacks = trim($Attacks);
 
         return $this;
     }
