@@ -3,8 +3,9 @@ namespace Zanson\SMParser\Traits\Song;
 
 use Zanson\SMParser\SMException;
 
-trait PreviewVid {
-    private $previewVid='';
+trait PreviewVid
+{
+    private $previewVid = '';
 
     /**
      * @return string

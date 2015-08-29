@@ -3,8 +3,9 @@ namespace Zanson\SMParser\Traits\Song;
 
 use Zanson\SMParser\SMException;
 
-trait ArtistTranslit {
-    private $artistTranslit='';
+trait ArtistTranslit
+{
+    private $artistTranslit = '';
 
     /**
      * @return string

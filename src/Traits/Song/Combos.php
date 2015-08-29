@@ -3,9 +3,10 @@ namespace Zanson\SMParser\Traits\Song;
 
 use Zanson\SMParser\SMException;
 
-trait Combos {
-    private $Combos='';
-    
+trait Combos
+{
+    private $Combos = '';
+
     /**
      * @return string
      */

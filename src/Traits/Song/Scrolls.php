@@ -3,9 +3,10 @@ namespace Zanson\SMParser\Traits\Song;
 
 use Zanson\SMParser\SMException;
 
-trait Scrolls {
-    private $Scrolls=[];
-    
+trait Scrolls
+{
+    private $Scrolls = [];
+
     /**
      * @return string
      */
@@ -43,7 +44,7 @@ trait Scrolls {
         }
         $scrolls = explode(',', $scrolls);
         foreach ($scrolls as $b) {
-            $e                 = explode('=', $b);
+            $e                          = explode('=', $b);
             $this->Scrolls[trim($e[0])] = trim($e[1]);
         }
 

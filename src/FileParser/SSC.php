@@ -47,7 +47,14 @@ class SSC
         'FAKES'            => 'Fakes',
         'LABELS'           => 'Labels',
         'KEYSOUNDS'        => 'KeySounds',
-        'ATTACKS'          => 'Attacks'
+        'ATTACKS'          => 'Attacks',
+        'CHARTNAME'        => 'setChartName',
+        'STEPSTYPE'        => 'setType',
+        'DESCRIPTION'      => 'setDescription',
+        'CHARTSTYLE'       => 'setStyle',
+        'DIFFICULTY'       => 'setDifficulty',
+        'METER'            => 'setMeter',
+        'Credit'           => 'setCredit'
     ];
 
     /**
@@ -59,22 +66,21 @@ class SSC
      */
     //TODO: Add NOTEDATA Parsing
     function parse($filePath) {
-        $filestring = file_get_contents($filePath);
-        $this->song = new Song();
-        $fs         = preg_replace(array("/\/\/.*\n/", "/^\s*[\r\n][\r\n]?/m"), array("\n", ""), $filestring);
-        $filearray  = explode(";", $fs);
+        $filestring  = file_get_contents($filePath);
+        $this->song  = new Song();
+        $fs          = preg_replace(array("/\/\/.*\n/", "/^\s*[\r\n][\r\n]?/m"), array("\n", ""), $filestring);
+        $filearray   = explode(";", $fs);
+        $parsingNote = false;
+        $noteSet     = null;
         foreach ($filearray as $s) {
             $data = explode(":", trim($s));
-            switch ($data[0]) {
-                case '#NOTES':
-                    $noteSet = $this->song->newNoteSet();
-                    $noteSet->setType($data[1])
-                        ->setDescription($data[2])
-                        ->setDifficulty($data[3])
-                        ->setMeter($data[4])
-                        ->setGroove($data[5]);
-
-                    $measures = explode(",", $data[6]);
+            switch (strtoupper($data[0])) {
+                case '#NOTEDATA':
+                    $parsingNote = true;
+                    $noteSet     = $this->song->newNoteSet();
+                    break;
+                case "#NOTES":
+                    $measures = explode(",", $data[1]);
                     foreach ($measures as $key => $val) {
                         $rows       = explode("\n", $val);
                         $newMeasure = $noteSet->newMeasure($key);
@@ -85,7 +91,7 @@ class SSC
                             }
                         }
                     }
-
+                    $parsingNote = false;
                     break;
                 default:
                     if (empty($data[0])) {
@@ -97,7 +103,12 @@ class SSC
                         break;
                     }
                     $method = 'set' . $this->fileTagNameToFunction[$data[0]];
-                    $this->song->{$method}($data[1]);
+
+                    if ($parsingNote === false) {
+                        $this->song->{$method}($data[1]);
+                    } else {
+                        $noteSet->{$method}($data[1]);
+                    }
                     break;
             }
         }

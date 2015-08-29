@@ -31,7 +31,7 @@ trait Delays
         }
         $string = explode(',', $string);
         foreach ($string as $b) {
-            $e                  = explode('=', $b);
+            $e                         = explode('=', $b);
             $this->Delays[trim($e[0])] = trim($e[1]);
         }
 

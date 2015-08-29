@@ -3,8 +3,9 @@ namespace Zanson\SMParser\Traits\Song;
 
 use Zanson\SMParser\SMException;
 
-trait Banner {
-    private $banner='';
+trait Banner
+{
+    private $banner = '';
 
     /**
      * @return string

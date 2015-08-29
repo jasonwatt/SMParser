@@ -3,9 +3,10 @@ namespace Zanson\SMParser\Traits\Song;
 
 use Zanson\SMParser\SMException;
 
-trait Attacks {
-    private $Attacks='';
-    
+trait Attacks
+{
+    private $Attacks = '';
+
     /**
      * @return string
      */

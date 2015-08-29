@@ -3,8 +3,9 @@ namespace Zanson\SMParser\Traits\Song;
 
 use Zanson\SMParser\SMException;
 
-trait Jacket {
-    private $jacket='';
+trait Jacket
+{
+    private $jacket = '';
 
     /**
      * @return string

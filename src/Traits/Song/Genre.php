@@ -3,8 +3,9 @@ namespace Zanson\SMParser\Traits\Song;
 
 use Zanson\SMParser\SMException;
 
-trait Genre {
-    private $genre='';
+trait Genre
+{
+    private $genre = '';
 
     /**
      * @return string

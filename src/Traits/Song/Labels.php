@@ -3,9 +3,10 @@ namespace Zanson\SMParser\Traits\Song;
 
 use Zanson\SMParser\SMException;
 
-trait Labels {
-    private $Labels=[];
-    
+trait Labels
+{
+    private $Labels = [];
+
     /**
      * @return string
      */
@@ -46,7 +47,7 @@ trait Labels {
         }
         $labels = explode(',', $labels);
         foreach ($labels as $b) {
-            $e                 = explode('=', $b);
+            $e                         = explode('=', $b);
             $this->Labels[trim($e[0])] = trim($e[1]);
         }
 

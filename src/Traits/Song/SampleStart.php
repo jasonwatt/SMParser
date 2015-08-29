@@ -30,7 +30,7 @@ trait SampleStart
      * @throws SMException
      */
     public function setSampleStart($sampleStart) {
-        if($sampleStart == (float)$sampleStart){
+        if ($sampleStart == (float)$sampleStart) {
             $sampleStart = (float)$sampleStart;
         }
         if (!is_float($sampleStart)) {

@@ -3,9 +3,10 @@ namespace Zanson\SMParser\Traits\Song;
 
 use Zanson\SMParser\SMException;
 
-trait DiscImage {
-    private $DiscImage='';
-    
+trait DiscImage
+{
+    private $DiscImage = '';
+
     /**
      * @return string
      */

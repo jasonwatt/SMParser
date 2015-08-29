@@ -31,7 +31,7 @@ trait Warps
         }
         $string = explode(',', $string);
         foreach ($string as $b) {
-            $e                  = explode('=', $b);
+            $e                        = explode('=', $b);
             $this->Warps[trim($e[0])] = trim($e[1]);
         }
 

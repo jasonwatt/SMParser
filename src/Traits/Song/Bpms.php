@@ -44,7 +44,7 @@ trait Bpms
         }
         $bpms = explode(',', $bpms);
         foreach ($bpms as $b) {
-            $e                 = explode('=', $b);
+            $e                       = explode('=', $b);
             $this->bpms[trim($e[0])] = trim($e[1]);
         }
         $this->setBmpMinMax();
@@ -52,14 +52,14 @@ trait Bpms
         return $this;
     }
 
-    private function setBmpMinMax(){
-        $min=null;
-        $max=null;
-        foreach($this->bpms as $bpm){
-            if($bpm < $min || $min == null){
+    private function setBmpMinMax() {
+        $min = null;
+        $max = null;
+        foreach ($this->bpms as $bpm) {
+            if ($bpm < $min || $min == null) {
                 $min = $bpm;
             }
-            if($bpm > $max|| $max == null){
+            if ($bpm > $max || $max == null) {
                 $max = $bpm;
             }
         }

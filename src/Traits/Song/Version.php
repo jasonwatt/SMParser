@@ -3,8 +3,9 @@ namespace Zanson\SMParser\Traits\Song;
 
 use Zanson\SMParser\SMException;
 
-trait Version {
-    private $version='';
+trait Version
+{
+    private $version = '';
 
     /**
      * @return string

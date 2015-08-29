@@ -12,8 +12,9 @@ use Zanson\SMParser\SMException;
  *
  * @package Zanson\SMParser\Traits\Song
  */
-trait SampleLength {
-    private $sampleLength='';
+trait SampleLength
+{
+    private $sampleLength = '';
 
     /**
      * @return string
@@ -29,7 +30,7 @@ trait SampleLength {
      * @throws SMException
      */
     public function setSampleLength($sampleLength) {
-        if($sampleLength == (float)$sampleLength){
+        if ($sampleLength == (float)$sampleLength) {
             $sampleLength = (float)$sampleLength;
         }
         if (!is_float($sampleLength)) {

@@ -11,8 +11,9 @@ use Zanson\SMParser\SMException;
  *
  * @package Zanson\SMParser\Traits\Song
  */
-trait Offset {
-    private $offset='';
+trait Offset
+{
+    private $offset = '';
 
     /**
      * @return string
@@ -28,7 +29,7 @@ trait Offset {
      * @throws SMException
      */
     public function setOffset($offset) {
-        if($offset == (float)$offset){
+        if ($offset == (float)$offset) {
             $offset = (float)$offset;
         }
         if (!is_float($offset)) {

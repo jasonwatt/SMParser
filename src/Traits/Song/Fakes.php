@@ -3,9 +3,10 @@ namespace Zanson\SMParser\Traits\Song;
 
 use Zanson\SMParser\SMException;
 
-trait Fakes {
-    private $Fakes=[];
-    
+trait Fakes
+{
+    private $Fakes = [];
+
     /**
      * @return string
      */
@@ -43,7 +44,7 @@ trait Fakes {
         }
         $fakes = explode(',', $fakes);
         foreach ($fakes as $b) {
-            $e                 = explode('=', $b);
+            $e                        = explode('=', $b);
             $this->Fakes[trim($e[0])] = trim($e[1]);
         }
 

@@ -3,8 +3,9 @@ namespace Zanson\SMParser\Traits\Song;
 
 use Zanson\SMParser\SMException;
 
-trait Lyricspath {
-    private $lyricspath='';
+trait Lyricspath
+{
+    private $lyricspath = '';
 
     /**
      * @return string
