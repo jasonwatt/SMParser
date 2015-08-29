@@ -38,7 +38,7 @@ trait Stops
      */
     public function setStopsFromString($string) {
         if (!is_string($string)) {
-            throw new SMException("Bpms must be a string");
+            throw new SMException("Stops must be a string");
         }
         $string = explode(',', $string);
         foreach ($string as $b) {
@@ -50,8 +50,8 @@ trait Stops
     }
 
     /**
-     * @param float $beat
-     * @param float $bpm
+     * @param $startTime
+     * @param $length
      *
      * @return $this
      */

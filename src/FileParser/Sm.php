@@ -1,6 +1,7 @@
 <?php
 namespace Zanson\SMParser\FileParser;
 
+use Zanson\DebugHelper\Output;
 use Zanson\SMParser\Model\SM\Song;
 use Zanson\SMParser\SMNotImplemented;
 
@@ -12,10 +13,10 @@ class Sm
         'TITLE'            => 'Title',
         'SUBTITLE'         => 'Subtitle',
         'ARTIST'           => 'Artist',
-        'GENRE'            => 'Genre',
         'TITLETRANSLIT'    => 'Titletranslit',
         'SUBTITLETRANSLIT' => 'SubtitleTranslit',
         'ARTISTTRANSLIT'   => 'ArtistTranslit',
+        'GENRE'            => 'Genre',
         'CREDIT'           => 'Credit',
         'BANNER'           => 'Banner',
         'BACKGROUND'       => 'Background',
@@ -83,5 +84,34 @@ class Sm
                     break;
             }
         }
+    }
+
+    public function export() {
+        $file = '';
+        foreach ($this->fileTagNameToFunction as $tag => $function) {
+            $function = str_replace('FromString', '', $function);
+            $tag      = strtoupper($tag);
+            $function = 'get' . $function;
+            if (method_exists($this->song, $function)) {
+                $value = $this->song->{$function}();
+                $file .= "#$tag:$value;\n";
+            } else {
+                Output::log('No Method', $function);
+            }
+        }
+
+        foreach ($this->song->notes as $key => $value) {
+            $file .=
+                "\n//---------------{$value->getType()} - {$value->getDifficulty()} ----------------\n" .
+                "#NOTES:\n" .
+                "     {$value->getType()}:\n" .
+                "     {$value->getDescription()}:\n" .
+                "     {$value->getDifficulty()}:\n" .
+                "     {$value->getMeter()}:\n" .
+                "     {$value->getGrooveString()}:\n" .
+                "{$value->getSteps()};\n";
+        }
+
+        return $file;
     }
 }
