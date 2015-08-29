@@ -1,6 +1,7 @@
 <?php
 namespace Zanson\SMParser\FileParser;
 
+use Zanson\DebugHelper\Output;
 use Zanson\SMParser\Model\SSC\Song;
 use Zanson\SMParser\SMNotImplemented;
 
@@ -9,16 +10,22 @@ class SSC
     public $song;
 
     private $fileTagNameToFunction = [
+        'VERSION'          => 'Version',
         'TITLE'            => 'Title',
         'SUBTITLE'         => 'Subtitle',
         'ARTIST'           => 'Artist',
-        'GENRE'            => 'Genre',
         'TITLETRANSLIT'    => 'Titletranslit',
         'SUBTITLETRANSLIT' => 'SubtitleTranslit',
         'ARTISTTRANSLIT'   => 'ArtistTranslit',
+        'GENRE'            => 'Genre',
+        'ORIGIN'           => 'Origin',
         'CREDIT'           => 'Credit',
         'BANNER'           => 'Banner',
         'BACKGROUND'       => 'Background',
+        'PREVIEWVID'       => 'PreviewVid',
+        'JACKET'           => 'Jacket',
+        'CDIMAGE'          => 'CDImage',
+        'DISCIMAGE'        => 'DiscImage',
         'LYRICSPATH'       => 'Lyricspath',
         'CDTITLE'          => 'Cdtitle',
         'MUSIC'            => 'Music',
@@ -29,24 +36,18 @@ class SSC
         'BPMS'             => 'BpmsFromString',
         'DISPLAYBPM'       => 'Displaybpm',
         'STOPS'            => 'StopsFromString',
-        'BGCHANGES'        => 'BGChanges',
-        'FGCHANGES'        => 'FGChanges',
-        'VERSION'          => 'Version',
         'PREVIEW'          => 'Preview',
-        'TIMESIGNATURES'   => 'TimeSignaturesFromString',
-        'ORIGIN'           => 'Origin',
-        'PREVIEWVID'       => 'PreviewVid',
-        'JACKET'           => 'Jacket',
-        'CDIMAGE'          => 'CDImage',
-        'DISCIMAGE'        => 'DiscImage',
         'DELAYS'           => 'DelaysFromString',
         'WARPS'            => 'WarpsFromString',
+        'TIMESIGNATURES'   => 'TimeSignaturesFromString',
         'TICKCOUNTS'       => 'TickCountsFromString',
         'COMBOS'           => 'Combos',
         'SPEEDS'           => 'SpeedsFromString',
         'SCROLLS'          => 'ScrollsFromString',
         'FAKES'            => 'FakesFromString',
         'LABELS'           => 'LabelsFromString',
+        'BGCHANGES'        => 'BGChanges',
+        'FGCHANGES'        => 'FGChanges',
         'KEYSOUNDS'        => 'KeySounds',
         'ATTACKS'          => 'Attacks',
         'CHARTNAME'        => 'ChartName',
@@ -115,5 +116,36 @@ class SSC
                     break;
             }
         }
+    }
+
+    public function export() {
+        $file = '';
+        foreach ($this->fileTagNameToFunction as $tag => $function) {
+            $function = str_replace('FromString', '', $function);
+            $tag      = strtoupper($tag);
+            $function = 'get' . $function;
+            if (method_exists($this->song, $function)) {
+                $value = $this->song->{$function}();
+                $file .= "#$tag:$value;\n";
+            }
+        }
+
+        foreach ($this->song->notes as $key => $value) {
+            $file .=
+                "\n//---------------{$value->getType()} - {$value->getDifficulty()} ----------------\n" .
+                "#NOTEDATA:;\n" .
+                "#CHARTNAME:{$value->getChartName()};\n" .
+                "#STEPSTYPE:{$value->getType()};\n" .
+                "#DESCRIPTION:{$value->getDescription()};\n" .
+                "#CHARTSTYLE:{$value->getChartStyle()};\n" .
+                "#DIFFICULTY:{$value->getDifficulty()};\n" .
+                "#METER:{$value->getMeter()};\n" .
+                "#RADARVALUES:{$value->getGrooveString()};\n" .
+                "#CREDIT:{$value->getCredit()};\n" .
+                "#ATTACKS:{$value->getAttacks()};\n" .
+                "#NOTES:\n{$value->getSteps()};\n";
+        }
+
+        return $file;
     }
 }

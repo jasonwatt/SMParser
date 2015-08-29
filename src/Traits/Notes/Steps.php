@@ -11,7 +11,14 @@ trait Steps
      * @return mixed
      */
     public function getSteps() {
-        return $this->measures;
+        $flat ='';
+        foreach($this->measures as $measure){
+            foreach($measure->rows as $row){
+                $flat .= "{$row->getRow()}\n";
+            }
+            $flat .= ",\n";
+        }
+        return substr($flat,0,-2);
     }
 
     /**

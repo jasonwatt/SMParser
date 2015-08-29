@@ -11,12 +11,7 @@ trait TimeSignatures
      * @return string
      */
     public function getTimeSignatures() {
-        $array = [];
-        foreach ($this->TimeSignatures as $key => $value) {
-            $array[] = $key . '=' . $value;
-        }
-
-        return implode(',', $array);
+        return implode(',', $this->TimeSignatures);
     }
 
     /**

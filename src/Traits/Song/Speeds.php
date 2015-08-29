@@ -11,12 +11,7 @@ trait Speeds
      * @return string
      */
     public function getSpeeds() {
-        $array = [];
-        foreach ($this->Speeds as $key => $value) {
-            $array[] = $key . '=' . $value;
-        }
-
-        return implode(',', $array);
+        return implode(',', $this->Speeds);
     }
 
     /**
